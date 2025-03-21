@@ -45,18 +45,29 @@ model Session {
 
 model User {
     id            String    @id @default(auto()) @map("_id") @db.ObjectId
-    name          String
-    email         String
-    prn           Int
-    role          Role      @default(USER)
-    attendances   Attendance[]
+    name          String?
+    email         String?   @unique
+    emailVerified DateTime?
+    image         String?
     accounts      Account[]
     sessions      Session[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Entity {
+    id            String    @id @default(auto()) @map("_id") @db.ObjectId
+    name          String
+    email         String  @unique
+    prn           Int     @unique
+    role          Role
+    attendances   Attendance[]
 }
 
 model Attendance {
     id        String   @id @default(auto()) @map("_id") @db.ObjectId
     userId    String   @db.ObjectId
     date      DateTime
-    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    entity    Entity     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

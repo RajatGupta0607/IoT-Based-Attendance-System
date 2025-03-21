@@ -44,7 +44,18 @@ export const authConfig = {
     }),
     async signIn({ account, profile }) {
       if (account?.provider === "google") {
-        return !!profile?.email?.endsWith("@sicsr.ac.in");
+        if (!!profile?.email?.endsWith("@sicsr.ac.in")) {
+          const userFromDB = await db.entity.findUnique({
+            where: { email: profile.email },
+            select: { id: true },
+          });
+
+          if (!userFromDB) {
+            return false;
+          }
+
+          return true;
+        }
       }
       return false;
     },
