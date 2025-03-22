@@ -17,6 +17,10 @@ export const env = createEnv({
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
+    MQTT_HOST: z.string(),
+    MQTT_PORT: z.coerce.number(),
+    MQTT_USERNAME: z.string(),
+    MQTT_PASSWORD: z.string(),
   },
 
   /**
@@ -38,6 +42,10 @@ export const env = createEnv({
     AUTH_GOOGLE_SECRET: process.env.AUTH_GOOGLE_SECRET,
     DATABASE_URL: process.env.DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,
+    MQTT_HOST: process.env.MQTT_HOST,
+    MQTT_PORT: process.env.MQTT_PORT,
+    MQTT_USERNAME: process.env.MQTT_USERNAME,
+    MQTT_PASSWORD: process.env.MQTT_PASSWORD,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially

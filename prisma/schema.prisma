@@ -68,6 +68,6 @@ model Entity {
 model Attendance {
     id        String   @id @default(auto()) @map("_id") @db.ObjectId
     userId    String   @db.ObjectId
-    date      DateTime
-    entity    Entity     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    date      DateTime @default(now())
+    entity    Entity   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
