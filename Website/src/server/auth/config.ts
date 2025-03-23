@@ -35,13 +35,19 @@ export const authConfig = {
   adapter: PrismaAdapter(db),
   secret: env.AUTH_SECRET,
   callbacks: {
-    session: ({ session, user }) => ({
-      ...session,
-      user: {
-        ...session.user,
-        id: user.id,
-      },
-    }),
+    session: async ({ session, user }) => {
+      const userFromDB = await db.entity.findUnique({
+        where: { email: user.email },
+      });
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          id: user.id,
+          role: userFromDB?.role,
+        },
+      };
+    },
     async signIn({ account, profile }) {
       if (account?.provider === "google") {
         if (!!profile?.email?.endsWith("@sicsr.ac.in")) {

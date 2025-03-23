@@ -1,11 +1,11 @@
 import { auth } from "@/server/auth";
 
 export default auth((req) => {
-  if (!req.auth?.user && req.nextUrl.pathname !== "/api/auth/signin") {
-    const newUrl = new URL("/api/auth/signin", req.nextUrl.origin);
+  if (!req.auth?.user && req.nextUrl.pathname !== "/signin") {
+    const newUrl = new URL("/signin", req.nextUrl.origin);
     return Response.redirect(newUrl);
-  } else if (req.auth?.user && req.nextUrl.pathname === "/api/auth/signin") {
-    const newUrl = new URL("/", req.nextUrl.origin);
+  } else if (req.auth?.user && req.nextUrl.pathname === "/signin") {
+    const newUrl = new URL("/dashboard", req.nextUrl.origin);
     return Response.redirect(newUrl);
   }
 });
