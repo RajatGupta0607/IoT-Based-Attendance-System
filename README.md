@@ -27,8 +27,21 @@ We noticed that attendance in schools and colleges is taken manually, which take
 ## 🔍Methodology
 
 ### Hardware Components & Their Uses
-| Sr. No   | Component                                | Purpose                                                          |
-| 1z   | Component                                | Purpose                                                          |
-| Sr. No   | Component                                | Purpose                                                          |
-| Sr. No   | Component                                | Purpose                                                          |
-| Sr. No   | Component                                | Purpose                                                          |
+| Sr. No | Components                           | Purpose                                                 | 
+|--------|--------------------------------------|---------------------------------------------------------|  
+| 1      | NFC Card                             | Unique ID for each student.                             |  
+| 2      | PN532 NFC Reader                     | Scans NFC Cards and reads the Unique IDs.               |
+| 3      | ESP8266 Microcontroller              | Sends the data to the server via MQTT.                  |  
+| 4      | LCD Display (PCF8574-based)          | Displays attendance status.                             |  
+| 5      | LED Indicator                        | Red light used to track progress.                       |  
+| 6      | Piezo Buzzer                         | Provides sound feedback.                                |  
+
+### Software Stack & Technologies Used
+| Sr. No | Technology                           | Purpose                                                 | 
+|--------|--------------------------------------|---------------------------------------------------------|  
+| 1      | MongoDB + Prisma ORM                 | Database Management.                                    |  
+| 2      | Next.js + React                      | Frontend Development.                                   |
+| 3      | Node.js + tRPC                       | Backend Development.                                    |  
+| 4      | MQTT Protocol                        | Handles communication between device & cloud.           |  
+| 5      | NextAuth                             | Google OAuth sign-in for students and faculties.        |  
+  
