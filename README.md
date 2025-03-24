@@ -45,3 +45,30 @@ We noticed that attendance in schools and colleges is taken manually, which take
 | 4      | MQTT Protocol                        | Handles communication between device & cloud.           |  
 | 5      | NextAuth                             | Google OAuth sign-in for students and faculties.        |  
   
+## 🏗️Project Structure
+
+📂 IoT-Attendance-System
+ ├── 📁 server           # Backend server (Node.js + tRPC)
+ │   ├── 📁 prisma         # Prisma ORM database setup
+ │   ├── 📜 index.js       # Main server entry point
+ │   ├── 📜 package.json   # Dependencies
+ │   └── 📜 .gitignore    
+ │
+ ├── 📁 website             # Next.js web application
+ │   ├── 📁 src               # Core source files
+ │   │   ├── 📁 components      # UI components
+ │   │   ├── 📁 styles          # Global styles (Tailwind)
+ │   │   ├── 📁 trpc            # API routes (backend)
+ │   │   ├── 📜 middleware.ts   # Authentication middleware
+ │   ├── 📜 next.config.js           # Next.js configuration
+ │   ├── 📜 tailwind.config.ts       # Tailwind configuration
+ │   ├── 📜 package.json             # Dependencies
+ │   ├── 📜 .gitignore    
+ │   └── 📜 README.md     
+ │
+ ├── 📁 hardware           # IoT Device Code (ESP8266 + NFC Reader)
+ │   ├── 📁 firmware         # Microcontroller firmware (C++)
+ │   ├── 📁 mqtt             # MQTT setup for cloud communication
+ │   └── 📜 README.md        # Hardware setup guide
+ │
+ └── 📜 README.md           # Project documentation
