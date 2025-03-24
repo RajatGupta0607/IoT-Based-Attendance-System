@@ -14,19 +14,19 @@ We noticed that attendance in schools and colleges is taken manually, which take
 
 ## 📊Benefits & Business Case
 
-### Who Benefits?
+### 🏫Who Benefits?
 - Our system helps to automate attendance tracking, so teachers don't have to take roll calls manually.
 - Students can check their attendance anytime from anywhere through the web app and avoid attendance shortages
 - Teachers can focus on teaching instead of marking attendance and generate reports to track student's attendance.
 
-### How the Data is Useful?
+### 📈How the Data is Useful?
 - All attendance is stored in a cloud database, making access easy and reducing the chances of missing or incorrect records.
 - Schools can analyze attendance patterns to identify students who frequently miss class and take action early.
 - Parents and students can check attendance records anytime, reducing confusion about attendance shortages.
 
 ## 🔍Methodology
 
-### Hardware Components & Their Uses
+### 🛠️Hardware Components & Their Uses
 | Sr. No | Components                           | Purpose                                                 | 
 |--------|--------------------------------------|---------------------------------------------------------|  
 | 1      | NFC Card                             | Unique ID for each student.                             |  
@@ -36,7 +36,7 @@ We noticed that attendance in schools and colleges is taken manually, which take
 | 5      | LED Indicator                        | Red light used to track progress.                       |  
 | 6      | Piezo Buzzer                         | Provides sound feedback.                                |  
 
-### Software Stack & Technologies Used
+### 💻Software Stack & Technologies Used
 | Sr. No | Technology                           | Purpose                                                 | 
 |--------|--------------------------------------|---------------------------------------------------------|  
 | 1      | MongoDB + Prisma ORM                 | Database Management.                                    |  
