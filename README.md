@@ -47,6 +47,7 @@ We noticed that attendance in schools and colleges is taken manually, which take
   
 ## 🏗️Project Structure
 
+```bash
 📂 IoT-Attendance-System
  ├── 📁 server           # Backend server (Node.js + tRPC)
  │   ├── 📁 prisma         # Prisma ORM database setup
@@ -72,3 +73,4 @@ We noticed that attendance in schools and colleges is taken manually, which take
  │   └── 📜 README.md        # Hardware setup guide
  │
  └── 📜 README.md           # Project documentation
+```
