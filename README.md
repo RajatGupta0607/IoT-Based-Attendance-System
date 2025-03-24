@@ -11,3 +11,15 @@ We noticed that attendance in schools and colleges is taken manually, which take
 3. We are also making a web app that allows real-time attendance tracking by faculty and students.
 4. On the faculty's side, we will generate reports to help analyze attendance data. 
 5. On the student's side, they can view their attendance.
+
+## Benefits & Business Case
+
+### Who Benefits?
+- Our system helps to automate attendance tracking, so teachers don't have to take roll calls manually.
+- Students can check their attendance anytime from anywhere through the web app and avoid attendance shortages
+- Teachers can focus on teaching instead of marking attendance and generate reports to track student's attendance.
+
+### How the Data is Useful?
+- All attendance is stored in a cloud database, making access easy and reducing the chances of missing or incorrect records.
+- Schools can analyze attendance patterns to identify students who frequently miss class and take action early.
+- Parents and students can check attendance records anytime, reducing confusion about attendance shortages.
