@@ -74,3 +74,13 @@ We noticed that attendance in schools and colleges is taken manually, which take
  │
  └── 📜 README.md           # Project documentation
 ```
+
+## 🔮Future Prospects
+
+- Allow teachers to mark their attendance using the same NFC system.
+- Track attendance for each lecture or subject instead of just daily attendance.
+- Create a mobile app for students and teachers to check attendance and get updates.
+- Send automatic alerts to students with low attendance.
+- Make offline attendance possible by storing data locally and syncing it later.
+- Allow parents to track their child's attendance through a portal.
+- Improve the UI/UX of the web app for better usability.
