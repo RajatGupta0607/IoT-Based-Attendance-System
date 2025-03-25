@@ -84,3 +84,7 @@ We noticed that attendance in schools and colleges is taken manually, which take
 - Make offline attendance possible by storing data locally and syncing it later.
 - Allow parents to track their child's attendance through a portal.
 - Improve the UI/UX of the web app for better usability.
+
+## 🤝Contribution Guidelines
+
+*We welcome contributions to improve and expand the IoT-Based Attendance System! Whether it's fixing bugs, improving documentation, adding features, or optimizing code, your help is appreciated.*
