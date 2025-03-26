@@ -49,6 +49,7 @@ function AddUserForm({ children }: { children: React.ReactNode }) {
     onSuccess: async () => {
       await utils.attendance.invalidate();
       toast.success("User added successfully");
+      form.reset();
     },
     onError: (error) => {
       toast.error(error.message);

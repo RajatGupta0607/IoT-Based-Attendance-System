@@ -7,7 +7,9 @@ async function Page() {
   return (
     <div className="max-h-screen w-full overflow-auto p-[50px]">
       {session?.user.role === "ADMIN" && <AdminDash />}
-      {session?.user.role === "USER" && <StudentDash />}
+      {session?.user.role === "USER" && (
+        <StudentDash name={session.user.name ?? ""} />
+      )}
     </div>
   );
 }

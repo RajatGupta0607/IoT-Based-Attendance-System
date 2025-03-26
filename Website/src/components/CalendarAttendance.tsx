@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { format, isSameDay, isAfter, startOfToday } from "date-fns";
+import { format, isAfter, startOfToday } from "date-fns";
 import {
   Table,
   TableBody,
@@ -114,9 +114,14 @@ export function CalendarAttendance({
                 {daysOfMonth.map((day) => {
                   const thisDate = getDateForDay(day);
                   const isOnOrBeforeToday = !isAfter(thisDate, today);
-                  const isInArray = person.validDates.some((d) =>
-                    isSameDay(d, thisDate),
-                  );
+                  const isInArray = person.validDates.some((d) => {
+                    const validDate = new Date(d);
+                    return (
+                      validDate.getUTCFullYear() === currentYear &&
+                      validDate.getUTCMonth() === currentMonth &&
+                      validDate.getUTCDate() === day
+                    );
+                  });
 
                   // Determine dot color
                   let dotColor = "bg-gray-400"; // future date

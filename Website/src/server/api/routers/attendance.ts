@@ -39,25 +39,15 @@ export const attendanceRouter = createTRPCRouter({
       }
     }),
 
-  getAllEntityWithAttendance: protectedProcedure.query(async ({ ctx }) => {
+  getAllStudentsCount: protectedProcedure.query(async ({ ctx }) => {
     try {
-      const entityWithAttendance = await ctx.db.entity.findMany({
+      const count = await ctx.db.entity.count({
         where: {
-          NOT: {
-            role: "ADMIN",
-          },
-        },
-        include: {
-          attendances: true,
+          role: "USER",
         },
       });
 
-      if (!entityWithAttendance || entityWithAttendance.length === 0) {
-        throw new TRPCError({
-          message: "No entity with attendance found",
-          code: "NOT_FOUND",
-        });
-      }
+      return count;
     } catch (error) {
       throw new TRPCError({
         message: (error as Error).message,
@@ -66,9 +56,107 @@ export const attendanceRouter = createTRPCRouter({
     }
   }),
 
-  getEntityWithAttendance: protectedProcedure.query(async ({ ctx }) => {
+  getAllPresentStudentsCount: protectedProcedure.query(async ({ ctx }) => {
     try {
-      const entityWithAttendance = await ctx.db.entity.findUnique({
+      const count = await ctx.db.attendance.count({
+        where: {
+          AND: [
+            {
+              entity: {
+                role: "USER",
+              },
+            },
+            {
+              date: {
+                gte: new Date(new Date().setHours(0, 0, 0, 0)),
+                lte: new Date(new Date().setHours(23, 59, 59, 999)),
+              },
+            },
+          ],
+        },
+      });
+
+      return count;
+    } catch (error) {
+      throw new TRPCError({
+        message: (error as Error).message,
+        code: "INTERNAL_SERVER_ERROR",
+      });
+    }
+  }),
+
+  getAllFaculty: protectedProcedure.query(async ({ ctx }) => {
+    try {
+      const faculty = await ctx.db.entity.findMany({
+        where: {
+          role: "ADMIN",
+        },
+      });
+
+      return faculty;
+    } catch (error) {
+      throw new TRPCError({
+        message: (error as Error).message,
+        code: "INTERNAL_SERVER_ERROR",
+      });
+    }
+  }),
+
+  getAllStudentsWithAttendance: protectedProcedure.query(async ({ ctx }) => {
+    try {
+      const students = await ctx.db.entity.findMany({
+        where: {
+          role: "USER",
+        },
+        include: {
+          attendances: true,
+        },
+      });
+
+      return students;
+    } catch (error) {
+      throw new TRPCError({
+        message: (error as Error).message,
+        code: "INTERNAL_SERVER_ERROR",
+      });
+    }
+  }),
+
+  isStudentPresent: protectedProcedure.query(async ({ ctx }) => {
+    const startOfDay = new Date();
+    startOfDay.setUTCHours(0, 0, 0, 0);
+    const endOfDay = new Date();
+    endOfDay.setUTCHours(23, 59, 59, 999);
+
+    try {
+      const isPresent = await ctx.db.attendance.findFirst({
+        where: {
+          AND: [
+            {
+              userId: ctx.session.user.id,
+            },
+            {
+              date: {
+                gte: startOfDay,
+                lte: endOfDay,
+              },
+            },
+          ],
+        },
+      });
+
+      return !!isPresent;
+    } catch (error) {
+      throw new TRPCError({
+        message: (error as Error).message,
+        code: "INTERNAL_SERVER_ERROR",
+      });
+    }
+  }),
+
+  getStudentAttendance: protectedProcedure.query(async ({ ctx }) => {
+    try {
+      const attendances = await ctx.db.entity.findMany({
         where: {
           id: ctx.session.user.id,
         },
@@ -77,12 +165,7 @@ export const attendanceRouter = createTRPCRouter({
         },
       });
 
-      if (!entityWithAttendance) {
-        throw new TRPCError({
-          message: "Entity does not exist",
-          code: "NOT_FOUND",
-        });
-      }
+      return attendances;
     } catch (error) {
       throw new TRPCError({
         message: (error as Error).message,
