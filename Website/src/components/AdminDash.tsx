@@ -1,10 +1,13 @@
+import AddUserForm from "./AddUserForm";
 import { Button } from "./ui/button";
 
 function AdminDash() {
   return (
     <div>
       <div className="flex w-full justify-end">
-        <Button className="bg-[#800080] hover:bg-[#691369]">Add User</Button>
+        <AddUserForm>
+          <Button className="bg-[#800080] hover:bg-[#691369]">Add User</Button>
+        </AddUserForm>
       </div>
       <div className="mt-11 flex flex-row flex-wrap justify-center gap-10">
         <DashCard text="Total No. of Students" data={40} />

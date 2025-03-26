@@ -43,7 +43,7 @@ export const authConfig = {
         ...session,
         user: {
           ...session.user,
-          id: user.id,
+          id: userFromDB?.id,
           role: userFromDB?.role,
         },
       };
