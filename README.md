@@ -67,7 +67,7 @@ We noticed that attendance in schools and colleges is taken manually, which take
  │   ├── 📜 .gitignore    
  │   └── 📜 README.md     
  │
- ├── 📁 hardware           # IoT Device Code (ESP8266 + NFC Reader)
+ ├── 📁 esp8266           # IoT Device Code (ESP8266 + NFC Reader)
  │   ├── 📁 firmware         # Microcontroller firmware (C++)
  │   ├── 📁 mqtt             # MQTT setup for cloud communication
  │   └── 📜 README.md        # Hardware setup guide
